@@ -26,7 +26,7 @@ class AgentLogs extends Component {
     loadData = async (agentId) => {
         if (agentId) {
             axios.get(
-                'http://localhost:3000/agent/' + agentId
+                'http://localhost:3001/agent/' + agentId
             ).then((response) => {
                 this.props.onLoad(response.data);
 

@@ -24,7 +24,7 @@ class Logs extends Component {
     loadData = async (e) => {
 
         axios.get(
-            'http://localhost:3000/'
+            'http://localhost:3001/'
         ).then((response) => {
             this.props.onLoad(response.data);
             console.log(response.data)
@@ -55,21 +55,24 @@ class Logs extends Component {
 
     renderData = () => {
         console.log(this.props)
-        return this.props.items.map((item) => {
-            console.log(item)
-            const { identifier, number, count, agentName, dateTime, agentIdentifier } = item //destructuring
-            return (
-                <tr key={identifier}>
-                    <td onClick={this.goToCallLog(number)}>{number}</td>
-                    <td>{count}</td>
-                    <td onClick={this.goToAgentLog(agentIdentifier)}>{agentName} /
-                    <span>{'' + (new Date(dateTime).getHours()) + ':'
-                            + (new Date(dateTime).getMinutes())}
-                        </span></td>
-
-                </tr>
-            )
-        })
+        if(this.props.items){
+            return this.props.items.map((item) => {
+                console.log(item)
+                const { identifier, number, count, agentName, dateTime, agentIdentifier } = item //destructuring
+                return (
+                    <tr key={identifier}>
+                        <td onClick={this.goToCallLog(number)}>{number}</td>
+                        <td>{count}</td>
+                        <td onClick={this.goToAgentLog(agentIdentifier)}>{agentName} /
+                        <span>{'' + (new Date(dateTime).getHours()) + ':'
+                                + (new Date(dateTime).getMinutes())}
+                            </span></td>
+    
+                    </tr>
+                )
+            })
+        }
+        
     }
 
     render() {

@@ -25,7 +25,7 @@ class CallLogs extends Component {
     loadData = async (number) => {
         if (number) {
             axios.get(
-                'http://localhost:3000/call/' + number
+                'http://localhost:3001/call/' + number
             ).then((response) => {
                 this.props.onLoad(response.data);
                 console.log(response.data)

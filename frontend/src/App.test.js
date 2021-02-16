@@ -21,7 +21,7 @@ describe('Title Display Widget App', () => {
     await page.waitForSelector('.app-title');
 
     const html = await page.$eval('.app-title', e => e.innerHTML);
-    expect(html).toBe('Logs List');
+    expect(html).toBe('Call Log App');
 
     browser.close();
   }, 16000);
